@@ -3,6 +3,7 @@ package com.eventtus.task.view;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 import com.eventtus.task.helpers.Constants;
 import com.eventtus.task.helpers.TwitterSessionManager;
@@ -25,6 +26,7 @@ public class ActivityLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setUpActionBar();
         loginButton = (TwitterLoginButton) findViewById(R.id.login_button);
         loginButton.setCallback(callBack);
     }
@@ -57,6 +59,14 @@ public class ActivityLogin extends AppCompatActivity {
         loginButton.onActivityResult(requestCode, resultCode, data);
         TwitterSessionManager.getSession();
 
+
+    }
+
+    public void setUpActionBar()
+    {
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setTitle(R.string.loginActivityName);
 
     }
 }

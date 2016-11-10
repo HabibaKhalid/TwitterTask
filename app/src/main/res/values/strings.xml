@@ -2,5 +2,9 @@
     <string name="app_name">Task</string>
 
     <string name="errorMsg">An Error Occured! Please try again later</string>
+    <string name="loginActivityName">Login</string>
+    <string name="followersActivityName">Followers</string>
+
+    <string name="errProtectedTweets">These Tweets are protected</string>
 
 </resources>

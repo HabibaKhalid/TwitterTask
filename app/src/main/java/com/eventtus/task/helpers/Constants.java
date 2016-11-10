@@ -15,6 +15,10 @@ public class Constants {
     public static String followersPath = generalPath + "followers/list.json";
     public static String followersTag = "Followers";
 
+//    public static String userIDKey = "UserIDKey";
+//    public static String userProfileImgKey = "UserProfileImgKey";
+//    public static String userProfileBackgroundKey = "UserProfileBackgroundKey";
+
 
 
 }

@@ -1,9 +1,12 @@
 package com.eventtus.task.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -11,6 +14,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.eventtus.task.MyApplication;
 import com.eventtus.task.R;
 import com.eventtus.task.adapters.RvUsersAdapter;
 import com.eventtus.task.data.Followers;
@@ -35,9 +39,10 @@ import retrofit2.Call;
 /**
  * Created by Habiba.Khalid on 11/7/2016.
  */
-public class ActivityFollowers extends AppCompatActivity {
+public class ActivityFollowers extends AppCompatActivity{
 
     RvUsersAdapter rvUserAdapter;
+
 
     ProgressBar progressBar;
     RecyclerView rvList;
@@ -69,7 +74,6 @@ public class ActivityFollowers extends AppCompatActivity {
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         rvList = (RecyclerView) findViewById(R.id.recyclerView);
-
         linearManager = new LinearLayoutManager(this);
         linearManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(linearManager);
@@ -78,7 +82,8 @@ public class ActivityFollowers extends AppCompatActivity {
 
         Utilities.ShowProgressBar(progressBar);
 
-        queue = NetworkQueue.getInstance(this);
+        setUpActionBar();
+
 
         loadMoreFollowers();
     }
@@ -139,6 +144,11 @@ public class ActivityFollowers extends AppCompatActivity {
         @Override
         public void onItemClick(User item) {
 
+            MyApplication.getAppSingleton().setSelectedUser(item);
+            Intent intent = new Intent(ActivityFollowers.this, ActivityFollowerDetails.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+
 
         }
     };
@@ -173,16 +183,24 @@ public class ActivityFollowers extends AppCompatActivity {
 
     };
 
+
     private int mod(int x, int y) {
         int result = x % y;
         return result < 0 ? result + y : result;
+    }
+
+    public void setUpActionBar() {
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setTitle(R.string.followersActivityName);
+
     }
 
 
     @Override
     public void onPause() {
         super.onPause();
-        queue.cancelAll(Constants.followersTag);
     }
+
 
 }

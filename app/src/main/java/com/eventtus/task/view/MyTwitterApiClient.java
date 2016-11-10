@@ -1,8 +1,10 @@
 package com.eventtus.task.view;
 
 import com.eventtus.task.data.Followers;
+import com.eventtus.task.data.Tweets;
 import com.twitter.sdk.android.core.TwitterApiClient;
 import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.core.models.User;
 
 import retrofit2.Call;
@@ -21,26 +23,27 @@ public class MyTwitterApiClient extends TwitterApiClient {
     /**
      * Provide CustomService with defined endpoints
      */
-    public CustomService getCustomService() {
-        return getService(CustomService.class);
-    }
 
     public FollowersService getFollowersService() {
         return getService(FollowersService.class);
     }
 
+    public RecentTweetsService getRecentTweetsService() {
+        return getService(RecentTweetsService.class);
+    }
 
 }
-interface CustomService {
-    @GET("/1.1/users/show.json")
-    Call<User> show(@Query("user_id") long id);
 
-}
+
 
 interface FollowersService {
     @GET("/1.1/followers/list.json")
     Call<Followers> list(@Query("user_id") long id, @Query("cursor") long cursor);
 }
 
-// example users/show service endpoint
+interface RecentTweetsService {
+    @GET("/1.1/statuses/user_timeline.json")
+    Call<Tweet> list(@Query("user_id") long id, @Query("count") int cursor);
+
+}
 

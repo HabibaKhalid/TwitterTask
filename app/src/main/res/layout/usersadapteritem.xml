@@ -17,8 +17,8 @@
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/imgItem"
-            android:layout_width="@dimen/newsItemImgSize"
-            android:layout_height="@dimen/newsItemImgSize"
+            android:layout_width="@dimen/itemImgSize"
+            android:layout_height="@dimen/itemImgSize"
             android:layout_marginEnd="@dimen/spacing_20"
             app:civ_border_color="@color/imgBorderColor"
             app:civ_border_width="1dp"

@@ -1,6 +1,7 @@
 package com.eventtus.task.helpers;
 
 import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.models.User;
 
 /**
  * Created by Habiba.Khalid on 11/6/2016.
@@ -8,6 +9,7 @@ import com.twitter.sdk.android.core.TwitterSession;
 public class AppSingleton {
 
     TwitterSession session;
+    private User selectedUser;
 
     public TwitterSession getSession() {
         return session;
@@ -18,4 +20,11 @@ public class AppSingleton {
     }
 
 
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+    }
 }
