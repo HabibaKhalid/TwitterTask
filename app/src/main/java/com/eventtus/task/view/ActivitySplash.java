@@ -11,7 +11,7 @@ import com.eventtus.task.helpers.TwitterSessionManager;
 /**
  * Created by Habiba.Khalid on 11/6/2016.
  */
-public class ActivitySplash extends Activity{
+public class ActivitySplash extends Activity {
     private final long SPLASH_DURATION_MILLIS = 2000;
 
     @Override
@@ -28,15 +28,15 @@ public class ActivitySplash extends Activity{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(ActivitySplash.this != null && !isFinishing()) {
+                if (ActivitySplash.this != null && !isFinishing()) {
+
+//                    navigateToLogin();
+
 
                     if (TwitterSessionManager.isUserLoggedIn()) {
-                    }
-                    else
-                    {
+                        navigateToFollowers();
+                    } else {
                         navigateToLogin();
-
-
                     }
                 }
             }
@@ -50,8 +50,8 @@ public class ActivitySplash extends Activity{
     }
 
     private void navigateToFollowers() {
-//        Intent intent = new Intent(ActivitySplash.this, NAVIGATE_TO_CLASS);
-//        startActivity(intent);
+        Intent intent = new Intent(ActivitySplash.this, ActivityFollowers.class);
+        startActivity(intent);
         finish();
     }
 

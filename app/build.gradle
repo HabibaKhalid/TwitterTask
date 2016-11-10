@@ -41,12 +41,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
-
     compile('com.twitter.sdk.android:twitter:2.1.1@aar') {
         transitive = true;
     }
-
+    compile 'com.android.support:recyclerview-v7:24.2.0'
     compile 'com.android.volley:volley:1.0.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.mikhaellopez:circularimageview:3.0.2'
+    compile 'com.pnikosis:materialish-progress:1.7'
 
 
 }

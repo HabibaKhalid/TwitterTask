@@ -43,6 +43,7 @@ public class MyApplication extends Application {
             mAppSingleton = new AppSingleton();
         }
         return mAppSingleton;
+
     }
 
 

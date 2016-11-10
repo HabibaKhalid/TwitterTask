@@ -20,8 +20,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.ActivityLogin">
+        <activity android:name=".view.ActivityLogin"></activity>
+
+        <activity android:name=".view.ActivityFollowers">
         </activity>
+
+
 
 
         <meta-data

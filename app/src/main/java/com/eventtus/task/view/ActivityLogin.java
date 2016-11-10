@@ -36,6 +36,9 @@ public class ActivityLogin extends AppCompatActivity {
 
             TwitterSessionManager.loginOrUpdateUser(result.data);
 
+            Intent intent = new Intent(ActivityLogin.this, ActivityFollowers.class);
+            startActivity(intent);
+
         }
 
         @Override
@@ -52,5 +55,8 @@ public class ActivityLogin extends AppCompatActivity {
 
         // Pass the activity result to the login button.
         loginButton.onActivityResult(requestCode, resultCode, data);
+        TwitterSessionManager.getSession();
+
+
     }
 }
